@@ -49,7 +49,47 @@ app.get("/videodl", async (req, res) => {
     console.log(err);
   }
 });
+app.get("/mp3", async (req, res) => {
+  const url = req.query.url;
+  const itag = req.query.itag;
+  const type = req.query.type;
+
+  // const info = await ytdl.getInfo(url);
+  // const title = info.videoDetails.title;
+
+  // res.header("Content-Disposition", `attachment;  filename="Download from.vivekmasona"`);
+  try {
+    ytdl(url, {
+            format: 'mp3',
+            filter: 'audioonly',
+            quality: 'highest'
+        }).pipe(res);
+
+    } catch (err) {
+        console.error(err);
+    }
+});
 app.get("/audio", async (req, res) => {
+  const url = req.query.url;
+  const itag = req.query.itag;
+  const type = req.query.type;
+
+  // const info = await ytdl.getInfo(url);
+  // const title = info.videoDetails.title;
+
+  // res.header("Content-Disposition", `attachment;  filename="Download from.vivekmasona"`);
+  try {
+    ytdl(url, {
+            format: 'mp3',
+            filter: 'audioonly',
+            quality: 'highest'
+        }).pipe(res);
+
+    } catch (err) {
+        console.error(err);
+    }
+});
+app.get("/music", async (req, res) => {
   const url = req.query.url;
   const itag = req.query.itag;
   const type = req.query.type;
@@ -102,7 +142,6 @@ app.get("/audiodl", async (req, res) => {
   try {
     ytdl(url, {
             format: 'mp3',
-            .audioBitrate(128)
             filter: 'audioonly',
             quality: 'highest'
         }).pipe(res);
