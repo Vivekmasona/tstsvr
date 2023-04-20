@@ -135,10 +135,10 @@ app.get("/audiodl", async (req, res) => {
   const itag = req.query.itag;
   const type = req.query.type;
 
-  // const info = await ytdl.getInfo(url);
-  // const title = info.videoDetails.title;
+  const info = await ytdl.getInfo(url);
+  const title = info.videoDetails.title;
 
-  res.header("Content-Disposition", `attachment;  filename="Download from.vivekmasona"`);
+  res.header("Content-Disposition", `attachment;  filename="${title}".mp3`);
   try {
     ytdl(url, {
             format: 'mp3',
