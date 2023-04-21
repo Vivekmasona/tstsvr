@@ -97,11 +97,11 @@ app.get("/music", async (req, res) => {
   const info = await ytdl.getInfo(url);
   const title = info.videoDetails.title;
 
-  res.header("Content-Disposition", `attachment;  filename="Download from.vivekmasona"`);
+  res.header("Content-Disposition", `attachment;  filename="${title}_vivekmasona"`);
   try {
     ytdl(url, {
-            format: 'mp3',
-            // filter: 'audioonly',
+            // format: 'mp3',
+            filter: 'audioonly',
             // quality: 'highest'
         }).pipe(res);
 
