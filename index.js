@@ -101,7 +101,7 @@ app.get("/music", async (req, res) => {
   try {
     ytdl(url, {
             // format: 'mp3',
-            filter: 'audioonly',
+            filter: 'mp3',
             // quality: 'highest'
         }).pipe(res);
 
