@@ -138,17 +138,14 @@ app.get("/audiodl", async (req, res) => {
   const info = await ytdl.getInfo(url);
   const title = info.videoDetails.title;
 
-  res.header("Content-Disposition", `attachment;  filename="${title}".mp3`.mp3);
-  try {
-    ytdl(url, {
-            format: 'mp3',
-            filter: 'audioonly',
-            quality: 'highest'
-        }).pipe(res);
-
-    } catch (err) {
-        console.error(err);
-    }
+  ytdl(URL, {
+format: 'mp3'
+}).pipe(res);
+ytdl.getBasicInfo(URL, (err, info) => {
+const {title} = info;
+if (err) return console.error(err);
+res.header('Content-Disposition', attachment; filename=${title}.mp3);
+});
 });
 
 app.get("/low-audiodl", async (req, res) => {
