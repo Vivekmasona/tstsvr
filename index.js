@@ -101,11 +101,11 @@ console.log('Formats with only audio: ' + audioFormats.length);
   const title = info.videoDetails.title;
 
   res.header("Content-Disposition", `attachment;  filename="${title}_vivekmasona"&type=".mp3"`);
-  // try {
-    // ytdl(url, {
-            // format: 'mp3',
-            // filter: 'audioonly',
-            // quality: 'highestaudio'
+  try {
+   ytdl(url, {
+            format: 'mp3',
+            filter: 'audioonly',
+            quality: 'highestaudio'
         }).pipe(res);
 
     } catch (err) {
