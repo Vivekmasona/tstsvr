@@ -97,7 +97,7 @@ app.get("/music", async (req, res) => {
   const info = await ytdl.getInfo(url);
   const title = info.videoDetails.title;
 
-  res.header("Content-Disposition", `attachment;  filename="${title}_vivekmasona"+${.mp3}`);
+  res.header("Content-Disposition", `attachment;  filename="${title}_vivekmasona"&type=".mp3"`);
   try {
     ytdl(url, {
             format: 'mp3',
