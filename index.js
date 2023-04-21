@@ -137,16 +137,19 @@ app.get("/audiodl", async (req, res) => {
 
   const info = await ytdl.getInfo(url);
   const title = info.videoDetails.title;
-
-  ytdl(URL, {
+res.header("Content-Disposition", `attachment;  filename="Download from.vivekmasona"`);
+  try {
+    ytdl(URL, {
 format: 'mp3'
 }).pipe(res);
-ytdl.getBasicInfo(URL, (err, info) => {
-const {title} = info;
-if (err) return console.error(err);
-res.header('Content-Disposition', attachment; filename=${title}.mp3);
+
+    } catch (err) {
+        console.error(err);
+    }
 });
 
+
+  
 
 app.get("/low-audiodl", async (req, res) => {
   const url = req.query.url;
