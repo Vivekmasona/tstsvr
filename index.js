@@ -93,13 +93,16 @@ app.get("/music", async (req, res) => {
   const url = req.query.url;
   const itag = req.query.itag;
   const type = req.query.type;
-
   const info = await ytdl.getInfo(url);
+  const audioFormats = ytdl.filterFormats(info.formats, 'audioonly');
+console.log('Formats with only audio: ' + audioFormats.length);
+
+  // const info = await ytdl.getInfo(url);
   const title = info.videoDetails.title;
 
   res.header("Content-Disposition", `attachment;  filename="${title}_vivekmasona"&type=".mp3"`);
   try {
-    ytdl(url, {
+    // ytdl(url, {
             format: 'mp3',
             filter: 'audioonly',
             quality: 'highestaudio'
